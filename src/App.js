@@ -1,24 +1,35 @@
 import logo from './logo.svg';
 import './App.css';
+import {useState, react} from 'react'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  Redirect,
+  useHistory,
+  useLocation
+} from 'react-router-dom'
+
 
 function App() {
+
+  const [authLink, setAuth] = useState("blah")
+
+ const showUsers = () => {
+   fetch('http://localhost:3000/signin')
+   .then(res=> res.json())
+   .then(res =>  {
+     console.log(setAuth)
+     setAuth(res)
+   })
+   .catch(err => console.log(err))
+ }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <div className="hello">
+        <a href={authLink}>auth</a>
+        <button onClick={showUsers}>click</button>
+      </div>
   );
 }
 
