@@ -16,19 +16,20 @@ function App() {
 
   const [authLink, setAuth] = useState("blah")
 
- const showUsers = () => {
-   fetch('http://localhost:3000/signin')
-   .then(res=> res.json())
-   .then(res =>  {
-     console.log(setAuth)
-     setAuth(res)
-   })
-   .catch(err => console.log(err))
- }
+//  const showUsers = () => {
+//    fetch('http://localhost:3000/signin')
+//    .then(res => console.log(res))
+//   //  .then(res =>  {
+//   //    console.log(setAuth)
+//   //    setAuth(res)
+//   //  })
+//   //  .catch(err => console.log(err))
+//   // }
+//  }
   return (
       <div className="hello">
-        <a href={authLink}>auth</a>
-        <button onClick={showUsers}>click</button>
+        <a href={'http://localhost:8000/signin'}>auth</a>
+        <button>click</button>
       </div>
   );
 }
