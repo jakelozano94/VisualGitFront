@@ -26,10 +26,26 @@ function App() {
    .then(console.log)
    .catch(err => console.log(err))
  }
+
+ const exampleRepo = () => {
+   fetch('http://localhost:8000/repos/example')
+   .then(res => res.json())
+   .then(console.log)
+   .catch(console.log)
+ }
+
+ const listCommits = () => {
+   fetch('http://localhost:8000/repos/commits')
+   .then(res => res.json())
+   .then(console.log)
+   .catch(console.log)
+ }
   return (
       <div className="hello">
         <a href={authRoute}>auth</a>
-        <button onClick={repoList}>list repos</button>
+        <button onClick={listCommits}>List Example Commits</button>
+        <button onClick={exampleRepo}>Example Repo</button>
+        <button onClick={repoList}>List Repos</button>
       </div>
   );
 }
