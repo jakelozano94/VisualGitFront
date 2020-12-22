@@ -40,6 +40,13 @@ function App() {
    .then(console.log)
    .catch(console.log)
  }
+
+ const listBranches = () => {
+   fetch('http://localhost:8000/repos/branches')
+   .then(res => res.json())
+   .then(console.log)
+   .catch(console.log)
+ }
   return (
       <div className="hello">
         <a href={authRoute}>auth</a>
