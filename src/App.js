@@ -39,6 +39,19 @@ function App() {
       .data(root.links())
       .join("path")
         .attr("d", treemap);
+
+        node.append("circle")
+        .attr("r", 2.5);
+  
+    node.append("text")
+        .attr("dy", "0.31em")
+        .attr("x", d => d.children ? -6 : 6)
+        .attr("text-anchor", d => d.children ? "end" : "start")
+        .text(label)
+      .clone(true).lower()
+        .attr("stroke", "white");
+    
+    return svg.node();
   }
 
   // const [authLink, setAuth] = useState()
