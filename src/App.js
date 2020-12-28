@@ -1,5 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
+import 'd3-hierarchy'
+import * as d3 from "d3"
 import {useState, react} from 'react'
 import {
   BrowserRouter as Router,
@@ -17,6 +19,16 @@ const repoList = ``
 
 
 function App() {
+
+  const d3Tree = (data) => {
+    let root = d3.stratify
+    let treemap = d3.treemap()
+      .size(['100px', '100px'])
+      .padding(2);
+
+    let nodes = treemap(root
+      .sum(function (data) { return data.sri }))
+  }
 
   // const [authLink, setAuth] = useState()
 
@@ -37,6 +49,7 @@ function App() {
  const listCommits = () => {
    fetch('http://localhost:8000/repos/commits')
    .then(res => res.json())
+   .then(d3Tree)
    .then(console.log)
    .catch(console.log)
  }
@@ -47,6 +60,7 @@ function App() {
    .then(console.log)
    .catch(console.log)
  }
+
   return (
       <div className="hello">
         <a href={authRoute}>auth</a>
